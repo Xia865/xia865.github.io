@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+                        url('img/Real-ESRGANv3-anime_0504_162751.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+        @keyframes titleFade {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: titleFade 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="hamburger">☰</div>
+    <div class="nav-links">
+        <a href="index.html">首页</a>
+        <a href="resources.html">资源库</a>
+        <a href="contact.html">联系</a>
+    </div>
+</nav>
+    
+    <header class="content-container">
+        <div class="title-wrapper">
+            <h1 style="text-shadow: 2px 2px 4px rgba(0,0,0,0.1)">欢迎来到卤蛋的个性空间</h1>
+            <h2 class="subtitle">让我们来看看卤蛋是什么</h2>
+        </div>
+    </header>
+
+<style>
+    header {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .title-wrapper {
+        text-align: center;
+        transform: translateY(-20%);
+    }
+</style>
+
+    <section class="about-section">
+        <h2 class="section-title">关于我</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="img/IMG_20250501_085407.png" alt="小狐狸日常照">
+            </div>
+            <div class="about-text">
+              <p>一个喜欢捣鼓系统的小狐狸，同时也是一个喜欢扩列的逗比。<strong>非常喜欢整活</strong>。</p>
+              <p>&nbsp;</p>
+              <p>啥？不知道扩列方式？查阅&nbsp; <a href="contact.html">聊天方式</a> 就可以知道喽&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>担心踩雷？？不用担心！我的雷点少到一根手指头就可以数得过来 。像什么不允许黄色不允许政治之类的 ……老生常谈&nbsp;</p>
+              <p>&nbsp;</p>
+                <p>右图那个表情包<a href="https://v.douyin.com/puQeXJd4O1o/">&nbsp;你猜是谁画的&nbsp;</a>（请点击蓝字 ）</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reasons-section">
+      <h2>找我扩列的三大理由</h2>
+        <div class="reasons-container">
+            <div class="reason-item">
+                <h3>有共同语言</h3>
+                <p>涉及的圈子广泛 ，无论是furry，科技，还是一些杂七杂八的 ，都可以聊&nbsp; &nbsp;</p>
+            </div>
+            <div class="reason-item">
+                <h3>雷点少</h3>
+                <p>除了我雷点以内的东西 ，你都可以聊 。&nbsp;&nbsp;</p>
+            </div>
+            <div class="reason-item">
+                <h3>性格开朗</h3>
+                <p>毕竟山东人嘛 ，开朗那是肯定的 。不过目前我主要是宅家 ，没钱去漫展。&nbsp; &nbsp;</p>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="cta-button" id="expandBtn">我要扩列</button>
+            <a href="https://jiwang.mysxl.cn/" target="_blank" class="sponsor-button">赞助商广告</a>
+        </div>
+    </section>
+
+<script>
+    // 添加浏览器通知功能
+    document.getElementById('expandBtn').addEventListener('click', function() {
+        if (Notification.permission === "granted") {
+            new Notification("哥们儿你不会看顶端栏吗");
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted") {
+                    new Notification("哥们儿你不会看顶端栏吗");
+                }
+            });
+        }
+    });
+</script>
+    
+    <footer>
+        <p>所有图片皆为个人财产，未经授权严禁转载或商用！</p>
+        <p>© 2024 鸿卤蛋 保留所有权利</p>
+    </footer>
+<script>
+    // 视口触发动画
+    const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.about-content, .about-image img, .about-text, .reason-item');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        elements.forEach(element => observer.observe(element));
+    }
+
+    // 初始化汉堡菜单和动画
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        animateOnScroll();
+    });
+</script>
+</body>
+</html>
+
+<style>
+    @keyframes subtitleFade {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #4a5568;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        animation: subtitleFade 1s ease-out 0.3s forwards;
+        opacity: 0;
+    }
+</style>
